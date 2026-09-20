@@ -1,0 +1,445 @@
+/* ==========================================================================
+   GLOBAL RESET & THEME STYLING
+   Midnight Black Palette with Crisp Typography
+   ========================================================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  background-color: #000000;
+  color: #ffffff;
+  font-family:
+    "Plus Jakarta Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ==========================================================================
+   ANIMATION CANVAS (GOLDEN HEARTS & SPARKLES LAYER)
+   ========================================================================== */
+#animationCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   WELCOME GATE SCREEN OVERLAY
+   ========================================================================== */
+#welcomeGate {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: radial-gradient(circle at center, #14050d 0%, #000000 100%);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+}
+
+#welcomeGate.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gate-btn {
+  background: rgba(18, 18, 18, 0.85);
+  border: 1.5px solid rgba(0, 240, 255, 0.55);
+  color: #ffffff;
+  padding: 0.95rem 2.8rem;
+  border-radius: 9999px;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  outline: none;
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease;
+  animation: neonGlow 2.2s infinite alternate ease-in-out;
+}
+
+.gate-btn:hover {
+  transform: scale(1.05);
+  border-color: rgba(0, 240, 255, 0.9);
+}
+
+.gate-btn:active {
+  transform: scale(0.97);
+}
+
+.gate-heart {
+  color: #ffd166;
+  font-size: 1.3rem;
+  filter: drop-shadow(0 0 8px rgba(255, 209, 102, 0.85));
+  animation: heartPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes neonGlow {
+  0% {
+    box-shadow:
+      0 0 10px rgba(0, 212, 255, 0.3),
+      0 0 25px rgba(0, 150, 255, 0.2),
+      inset 0 0 8px rgba(0, 212, 255, 0.15);
+  }
+  50% {
+    box-shadow:
+      0 0 22px rgba(0, 229, 255, 0.75),
+      0 0 50px rgba(0, 180, 255, 0.5),
+      0 0 75px rgba(0, 140, 255, 0.3),
+      inset 0 0 14px rgba(0, 229, 255, 0.35);
+  }
+  100% {
+    box-shadow:
+      0 0 12px rgba(0, 212, 255, 0.35),
+      0 0 28px rgba(0, 150, 255, 0.25),
+      inset 0 0 10px rgba(0, 212, 255, 0.2);
+  }
+}
+
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+  }
+  50% {
+    transform: scale(1.22) translateY(-2px);
+  }
+}
+
+/* ==========================================================================
+   APP VIEWPORT CONTAINER (MOBILE-FIRST FRAME)
+   ========================================================================== */
+.app-viewport {
+  width: 100%;
+  max-width: 440px;
+  min-height: 100vh;
+  padding: 1.5rem 1.25rem 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================================================
+   1. FLOATING TOP MUSIC PLAYER CARD
+   ========================================================================== */
+.music-player-card {
+  width: 100%;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 0.85rem 1.15rem 0.95rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  margin-bottom: 2rem;
+}
+
+.player-main-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem;
+}
+
+.player-album-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  flex-shrink: 0;
+  background-color: #222222;
+}
+
+.player-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.track-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #ffffff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  letter-spacing: -0.01em;
+}
+
+.track-artist {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: #8c8c93;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.player-toggle-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+.player-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+.player-toggle-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: #000000;
+}
+
+.player-progress-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding-left: 3.5rem;
+}
+
+.progress-bar-container {
+  width: 100%;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.progress-fill {
+  width: 0%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  transition: width 0.1s linear;
+}
+
+.player-timestamps {
+  font-size: 0.68rem;
+  color: #8c8c93;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+/* ==========================================================================
+   2. ALTERNATING MEDIA CAROUSEL (3-SEC AUTO SLIDESHOW)
+   ========================================================================== */
+.video-card-wrapper {
+  width: 100%;
+  max-width: 330px;
+  aspect-ratio: 9 / 14;
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.85),
+    0 0 1px rgba(255, 255, 255, 0.15);
+  background-color: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  user-select: none;
+}
+
+.carousel-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* 3-Second Slide Progress Tracker (Instagram Stories Look) */
+.slide-progress-bar {
+  position: absolute;
+  top: 10px;
+  left: 12px;
+  right: 12px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  overflow: hidden;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.slide-progress-fill {
+  height: 100%;
+  width: 0%;
+  background: #ffffff;
+  border-radius: 2px;
+}
+
+/* Transparent Tap Zones for Navigation */
+.nav-zone {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 4;
+  cursor: pointer;
+}
+
+.nav-zone-left {
+  left: 0;
+  width: 35%;
+}
+
+.nav-zone-center {
+  left: 35%;
+  width: 30%;
+}
+
+.nav-zone-right {
+  right: 0;
+  width: 35%;
+}
+
+/* Play/Pause Overlay Indicator */
+.video-play-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 64px;
+  height: 64px;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  z-index: 6;
+}
+
+.video-play-overlay svg {
+  width: 24px;
+  height: 24px;
+  fill: #ffffff;
+  transform: translateX(2px);
+}
+
+.video-card-wrapper.paused .video-play-overlay {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* 12 Pagination Dots */
+.carousel-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 1.25rem;
+  margin-bottom: 1.85rem;
+  flex-wrap: wrap;
+  max-width: 300px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #2b2b2e;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.dot:hover {
+  background-color: #44444a;
+}
+
+.dot.active {
+  width: 18px;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+/* ==========================================================================
+   3. TYPOGRAPHY & COUNTDOWN SECTION
+   ========================================================================== */
+.love-heading {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.counter-capsule {
+  width: 100%;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 0.95rem 1.15rem;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1.75rem;
+}
+
+.counter-text {
+  color: #ff5565;
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  word-spacing: 0.05em;
+}
+
+.love-paragraph {
+  font-size: 0.92rem;
+  line-height: 1.75;
+  color: #8c8c93;
+  text-align: center;
+  font-weight: 400;
+  max-width: 360px;
+  padding: 0 0.5rem;
+  letter-spacing: -0.01em;
+}
