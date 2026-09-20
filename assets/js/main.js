@@ -439,7 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     bgMusic.addEventListener("error", () => {
-      console.warn("[Audio] Could not load song from assets/audio/song.mp3.");
+      console.warn("[Audio] Could not load song from assets/audio/Song.mp3.");
     });
   }
 
