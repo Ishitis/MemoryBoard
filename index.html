@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Memoryiit - In Love Forever</title>
+
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css" />
+  </head>
+  <body>
+    <!-- Full-Screen Interactive Canvas Layer (Golden Hearts & Click Sparkles) -->
+    <canvas id="animationCanvas"></canvas>
+
+    <!-- ==========================================================================
+       WELCOME GATE OVERLAY (ENTRY SCREEN)
+       ========================================================================== -->
+    <div id="welcomeGate">
+      <button
+        class="gate-btn"
+        id="gateClickBtn"
+        type="button"
+        aria-label="Enter Memory Experience"
+      >
+        <span class="gate-heart">💛</span>
+        <span>CLICK</span>
+      </button>
+    </div>
+
+    <!-- ==========================================================================
+       MAIN VIEWPORT CONTAINER
+       ========================================================================== -->
+    <main class="app-viewport">
+      <!-- 1. Floating Top Music Player -->
+      <section class="music-player-card">
+        <div class="player-main-row">
+          <img
+            src="assets/images/cover.jpg"
+            alt="Album Cover"
+            class="player-album-thumb"
+            onerror="
+              this.src =
+                'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=200&auto=format&fit=crop'
+            "
+          />
+
+          <div class="player-info">
+            <div class="track-title">Curated For BOBO</div>
+            <div class="track-artist">How kuki feels</div>
+          </div>
+
+          <button
+            class="player-toggle-btn"
+            id="audioToggleBtn"
+            type="button"
+            aria-label="Toggle Audio Playback"
+          >
+            <!-- Pause Icon -->
+            <svg id="pauseIcon" viewBox="0 0 24 24">
+              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+            </svg>
+            <!-- Play Icon -->
+            <svg
+              id="playIcon"
+              viewBox="0 0 24 24"
+              style="display: none; margin-left: 2px"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+
+        <div class="player-progress-row">
+          <div class="progress-bar-container" id="progressBar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <div class="player-timestamps" id="timeDisplay">0:00 / 0:00</div>
+        </div>
+      </section>
+
+      <!-- Background Audio Element -->
+      <audio
+        id="bgMusic"
+        src="assets/audio/song.mp3"
+        loop
+        preload="auto"
+      ></audio>
+
+      <!-- ==========================================================================
+         2. VERTICAL PORTRAIT ALTERNATING CAROUSEL (6 PHOTOS + 6 VIDEOS)
+         ========================================================================== -->
+      <div class="video-card-wrapper" id="carouselCard">
+        <!-- Media Items (Image and Video elements swapped dynamically by main.js) -->
+        <img
+          id="carouselImage"
+          class="carousel-media"
+          src="assets/images/image1.jpg"
+          alt="Memory Photo"
+          style="display: block"
+        />
+        <video
+          id="carouselVideo"
+          class="carousel-media"
+          playsinline
+          loop
+          muted
+          preload="auto"
+          style="display: none"
+        ></video>
+
+        <!-- Tap Navigation Zones: Left (Prev), Center (Pause/Play), Right (Next) -->
+        <div
+          class="nav-zone nav-zone-left"
+          id="navPrevZone"
+          title="Previous"
+        ></div>
+        <div
+          class="nav-zone nav-zone-center"
+          id="navCenterZone"
+          title="Pause/Play"
+        ></div>
+        <div
+          class="nav-zone nav-zone-right"
+          id="navNextZone"
+          title="Next"
+        ></div>
+
+        <!-- Center Paused Indicator Badge -->
+        <div class="video-play-overlay" id="carouselPlayOverlay">
+          <svg viewBox="0 0 24 24">
+            <path d="M8 5v14l11-7z" />
+          </svg>
+        </div>
+
+        <!-- Progress bar filling over 3 seconds inside current slide -->
+        <div class="slide-progress-bar">
+          <div class="slide-progress-fill" id="slideProgressFill"></div>
+        </div>
+      </div>
+
+      <!-- 12 Pagination Dots (One for each item) -->
+      <div class="carousel-pagination" id="carouselPagination">
+        <!-- Dynamically generated 12 dots in main.js -->
+      </div>
+
+      <!-- 3. Typography & Heading -->
+      <h1 class="love-heading">I love you:</h1>
+
+      <!-- 4. Dedicated Live Counter Capsule -->
+      <div class="counter-capsule">
+        <div class="counter-text" id="countdown">Calculating time...</div>
+      </div>
+
+      <!-- 5. Romantic Narrative Block -->
+      <p class="love-paragraph">
+        Since you came into my life, everything feels lighter. Your gaze soothes
+        me, your embrace gives me peace, and every shared smile reminds me how
+        lucky I am.
+      </p>
+    </main>
+
+    <!-- External JavaScript Logic -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
