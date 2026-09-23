@@ -354,7 +354,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ------------------------------------------------------------------------
      3. LIVE COUNTDOWN / COUNT-UP CALCULATOR
      ------------------------------------------------------------------------ */
-  const startDate = new Date(2026, 4, 6, 18, 30, 0);
+  const startDate = new Date(2026, 3, 6, 18, 30, 0);
 
   function updateCountdown() {
     const now = new Date();
