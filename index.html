@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -14,7 +14,7 @@
     />
 
     <!-- External Stylesheet -->
-    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
     <!-- Full-Screen Interactive Canvas Layer (Golden Hearts & Click Sparkles) -->
@@ -43,13 +43,9 @@
       <section class="music-player-card">
         <div class="player-main-row">
           <img
-            src="Memoryboard/assets/images/Image (1).jpg"
+            src="./assets/images/cover.jpg"
             alt="Album Cover"
             class="player-album-thumb"
-            onerror="
-              this.src =
-                'https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=200&auto=format&fit=crop'
-            "
           />
 
           <div class="player-info">
@@ -89,7 +85,7 @@
       <!-- Background Audio Element -->
       <audio
         id="bgMusic"
-        src="assets/audio/Song.mp3"
+        src="./assets/audio/Song.mp3"
         loop
         preload="auto"
       ></audio>
@@ -97,12 +93,12 @@
       <!-- ==========================================================================
          2. VERTICAL PORTRAIT ALTERNATING CAROUSEL (6 PHOTOS + 6 VIDEOS)
          ========================================================================== -->
-      <div class="video-card-wrapper" id="carouselCard">
+      <div class="video-card-wrapper" id="carouselCard" style="touch-action: pan-y;">
         <!-- Media Items (Image and Video elements swapped dynamically by main.js) -->
         <img
           id="carouselImage"
           class="carousel-media"
-          src="Memoryboard/assets/images/Image (1).jpg"
+          src="./assets/images/image1.jpg"
           alt="Memory Photo"
           style="display: block"
         />
@@ -140,16 +136,14 @@
           </svg>
         </div>
 
-        <!-- Progress bar filling over 3 seconds inside current slide -->
+        <!-- Slide Progress Bar -->
         <div class="slide-progress-bar">
           <div class="slide-progress-fill" id="slideProgressFill"></div>
         </div>
       </div>
 
       <!-- 12 Pagination Dots (One for each item) -->
-      <div class="carousel-pagination" id="carouselPagination">
-        <!-- Dynamically generated 12 dots in main.js -->
-      </div>
+      <div class="carousel-pagination" id="carouselPagination"></div>
 
       <!-- 3. Typography & Heading -->
       <h1 class="love-heading">I love you:</h1>
@@ -168,6 +162,6 @@
     </main>
 
     <!-- External JavaScript Logic -->
-    <script src="assets/js/main.js"></script>
+    <script src="./assets/js/main.js"></script>
   </body>
 </html>
